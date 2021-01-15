@@ -11,7 +11,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        vim \
        rsync \
        sudo \
-       repo bc \
+       bc rsync\
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home 
 
