@@ -26,6 +26,7 @@ if [ $# -gt 0 ]; then
    CMD="$*"
 fi
 
+HOSTNAME=$(echo $DOCKER_IMAGE_NAME | sed -e 's/:/_/')
 WORK_DIR=`pwd`
 cd ~
 docker run -it --rm\
@@ -36,7 +37,7 @@ docker run -it --rm\
     -v /etc/passwd:/etc/passwd:ro \
     -v /etc/shadow:/etc/shadow:ro \
     -v /etc/sudoers.d:/etc/sudoers.d:ro \
-    --uts=host \
+    --hostname="$HOSTNAME" \
     ${DOCKER_OPTION} \
     ${DOCKER_IMAGE_NAME} \
     $CMD
