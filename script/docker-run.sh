@@ -36,6 +36,7 @@ docker run -it --rm\
     -v /etc/passwd:/etc/passwd:ro \
     -v /etc/shadow:/etc/shadow:ro \
     -v /etc/sudoers.d:/etc/sudoers.d:ro \
+    --uts=host \
     ${DOCKER_OPTION} \
     ${DOCKER_IMAGE_NAME} \
     $CMD
