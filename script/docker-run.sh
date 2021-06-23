@@ -1,9 +1,8 @@
 #!/bin/bash
-IMAGE_LIST=`docker images | grep yocto | awk '{print ""$1 ":" $2}'`
+IMAGE_LIST=`docker images | grep -e yocto -e android | awk '{print ""$1 ":" $2}'`
 
 Usage ()
 {
-    IMAGE_LIST=`docker images | grep yocto | awk '{print "    "$1 ":" $2}'`
     echo "Usage:"
     echo "    $0 {yocto_image_name}"
     echo "LIST:"
