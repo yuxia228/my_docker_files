@@ -11,6 +11,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        vim \
        sudo \
        repo \
+       apt-transport-https ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home 
 
@@ -21,4 +22,5 @@ RUN dpkg-reconfigure locales \
 ENV LC_ALL   en_US.UTF-8
 ENV LANG     en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+RUN update-ca-certificates
 

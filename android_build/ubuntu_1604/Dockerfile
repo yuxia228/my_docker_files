@@ -12,6 +12,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev \
        libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils liblz4-tool \
        xsltproc unzip python-networkx python-wand python-crypto liblz4-tool bc \
+    apt-transport-https ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
 
@@ -22,4 +23,5 @@ RUN dpkg-reconfigure locales \
 ENV LC_ALL   en_US.UTF-8
 ENV LANG     en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+RUN update-ca-certificates
 
