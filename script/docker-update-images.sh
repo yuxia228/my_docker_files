@@ -1,9 +1,9 @@
 #!/bin/bash
 
 SCRIPT_DIR=$(cd `dirname $0` && pwd)
-TARGET_DIRS=$(ls | grep _build)
 
 cd $SCRIPT_DIR/../
+TARGET_DIRS=$(ls | grep _build)
 for DIR in ${TARGET_DIRS}; do
     for item in $(ls ./$DIR/); do
         DOCKER_FILE_DIR=./$DIR/$item/
