@@ -12,7 +12,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        rsync \
        sudo \
        bc rsync\
-       apt-transport-https ca-certificates lz4c pzstd zstd\
+       apt-transport-https ca-certificates zstd liblz4-tool \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home 
 
