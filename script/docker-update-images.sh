@@ -10,7 +10,7 @@ for DIR in ${TARGET_DIRS}; do
         TARGET_OS=$(echo $DIR | cut -f1 -d'_')
         UBUNTU_VER=$(echo $item | cut -f2 -d'_')
         echo $DOCKER_FILE_DIR $TARGET_OS $UBUNTU_VER
-        docker build -t $TARGET_OS:$UBUNTU_VER $DOCKER_FILE_DIR
+        docker build -t $TARGET_OS:$UBUNTU_VER $DOCKER_FILE_DIR --no-cache
     done
 done
 
