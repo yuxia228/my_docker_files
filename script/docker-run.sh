@@ -25,13 +25,20 @@ if [ $# -gt 0 ]; then
    CMD="$*"
 fi
 
+DL_DIR_OPT=""
+if [ -n $DL_DIR ]; then
+    DL_DIR_OPT="-e DL_DIR -v ${DL_DIR}:${DL_DIR}"
+fi
+
 HOSTNAME=$(echo $DOCKER_IMAGE_NAME | sed -e 's/:/_/')
 WORK_DIR=`pwd`
 cd ~
 docker run -it --rm\
     -u $(id -u):$(id -g) \
     -v $(pwd):$(pwd) \
+    -v ${WORK_DIR}:${WORK_DIR} \
     -w ${WORK_DIR} \
+    ${DL_DIR_OPT} \
     -v /etc/group:/etc/group:ro \
     -v /etc/passwd:/etc/passwd:ro \
     -v /etc/shadow:/etc/shadow:ro \
