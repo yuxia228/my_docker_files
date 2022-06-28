@@ -1,6 +1,11 @@
 # my_docker_files
 docker_files_collection
 
+## How to make script link to ${HOME}/bin
+```
+./init.sh
+```
+
 ## How to build docker Image
 ```
 docker build -t <name> <path to Dockerfile>
