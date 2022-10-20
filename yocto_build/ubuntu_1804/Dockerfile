@@ -12,7 +12,8 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        sudo \
        repo \
        rsync bc \
-       apt-transport-https ca-certificates zstd liblz4-tool \
+       apt-transport-https ca-certificates zstd liblz4-tool rpm2cpio \
+       screen libncurses-dev ninja-build dosfstool \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home 
 
