@@ -13,6 +13,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        sudo \
        bc rsync\
        apt-transport-https ca-certificates zstd liblz4-tool \
+       ninja-build dosfstools libncurses-dev flex bison \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home 
 
