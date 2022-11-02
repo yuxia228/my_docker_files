@@ -35,6 +35,7 @@ WORK_DIR=`pwd`
 cd ~
 docker run -it --rm\
     -u $(id -u):$(id -g) \
+    --group-add="sudo" \
     -v $(pwd):$(pwd) \
     -v ${WORK_DIR}:${WORK_DIR} \
     -w ${WORK_DIR} \
