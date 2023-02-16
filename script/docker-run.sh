@@ -1,5 +1,8 @@
 #!/bin/bash
-IMAGE_LIST=`docker images | grep -e yocto -e android | awk '{print ""$1 ":" $2}'`
+IMAGE_LIST=`docker images \
+    | grep -e yocto -e android -e wine \
+    | awk '{print ""$1 ":" $2}' \
+`
 
 Usage ()
 {
