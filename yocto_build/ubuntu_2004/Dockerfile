@@ -15,8 +15,12 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        apt-transport-https ca-certificates zstd liblz4-tool \
        ninja-build dosfstools libncurses-dev flex bison \
        screen libncurses-dev ninja-build dosfstools \
+       python3-pygit2 \
     && rm -rf /var/lib/apt/lists/* \
-    && chmod 777 -R /home 
+    && chmod 777 -R /home
+
+RUN pip3 install pygit2
+RUN pip3 install git+https://github.com/xen-troops/moulin
 
 # Locales
 RUN dpkg-reconfigure locales \
