@@ -1,5 +1,6 @@
 FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
     && apt-get install -y \
        gawk wget git-core diffstat unzip texinfo gcc-multilib \
@@ -15,12 +16,19 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        apt-transport-https ca-certificates zstd liblz4-tool \
        ninja-build dosfstools libncurses-dev flex bison \
        screen libncurses-dev ninja-build dosfstools \
-       python3-pygit2 \
+       python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
 
+RUN wget https://apt.kitware.com/kitware-archive.sh \
+    && bash kitware-archive.sh \
+    && apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
+    && apt-get install -y cmake \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pip3 install pygit2
 RUN pip3 install git+https://github.com/xen-troops/moulin
+
 
 # Locales
 RUN dpkg-reconfigure locales \
