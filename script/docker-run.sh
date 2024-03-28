@@ -1,6 +1,6 @@
 #!/bin/bash
 IMAGE_LIST=`docker images \
-    | grep -e yocto -e android -e wine \
+    | grep -e yocto -e android -e wine -e fedora \
     | awk '{print ""$1 ":" $2}' \
 `
 
@@ -36,19 +36,23 @@ fi
 HOSTNAME=$(echo $DOCKER_IMAGE_NAME | sed -e 's/:/_/')
 WORK_DIR=`pwd`
 cd ~
+sudogroup=sudo
+if [[ "$(echo ${DOCKER_IMAGE_NAME} | grep -v fedora)" != "" ]]; then
+    echo Hello Ubuntu container
+else ## Only fedora
+    echo Hello fedora container
+    sudogroup=wheel
+fi
 docker run -it --rm\
     -u $(id -u):$(id -g) \
-    --group-add="sudo" \
+    --group-add="$sudogroup" \
     -v $(pwd):$(pwd) \
     -v ${WORK_DIR}:${WORK_DIR} \
     -w ${WORK_DIR} \
     ${DL_DIR_OPT} \
-    -v /etc/group:/etc/group:ro \
     -v /etc/passwd:/etc/passwd:ro \
     -v /etc/shadow:/etc/shadow:ro \
-    -v /etc/sudoers.d:/etc/sudoers.d:ro \
     --hostname="$HOSTNAME" \
     ${DOCKER_OPTION} \
     ${DOCKER_IMAGE_NAME} \
     $CMD
-
