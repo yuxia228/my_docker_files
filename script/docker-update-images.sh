@@ -23,6 +23,10 @@ if [ $# -ne 1 ];then
     Usage; exit;
 fi
 
+docker buildx create --name mybuilder
+docker buildx use mybuilder
+docker buildx inspect --bootstrap
+
 cd $SCRIPT_DIR/../
 # single build
 if [ "$1" != "all" ]; then
