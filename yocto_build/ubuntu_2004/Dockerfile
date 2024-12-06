@@ -16,7 +16,8 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        apt-transport-https ca-certificates zstd liblz4-tool \
        ninja-build dosfstools libncurses-dev flex bison \
        screen libncurses-dev ninja-build dosfstools \
-       python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf \
+       python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf pigz \
+       p7zip-full lib32stdc++6 make binutils default-jre ruby \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
 
