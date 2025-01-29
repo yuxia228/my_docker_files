@@ -16,12 +16,14 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        ninja-build dosfstools libncurses-dev flex bison \
        screen libncurses-dev ninja-build dosfstools \
        python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf pigz \
-       zstd simg2img libncurses5 \
+       zstd simg2img libncurses5 python3-pycryptodome libssl-dev lzop \
+       lld libelf-dev dwarves openjdk-11-jdk \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
 
 RUN pip3 install pygit2
 RUN pip3 install git+https://github.com/xen-troops/moulin
+RUN python3 -m pip install meson mako
 
 # Locales
 RUN dpkg-reconfigure locales \
