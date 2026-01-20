@@ -1,8 +1,15 @@
 #!/bin/bash
-IMAGE_LIST=`docker images \
-    | grep -e yocto -e android -e wine -e fedora -e cent -e alma \
-    | awk '{print ""$1 ":" $2}' \
-`
+if [[ "$(docker images | grep TAG)" == "" ]]; then
+    IMAGE_LIST=`docker images \
+        | grep -e yocto -e android -e wine -e fedora -e cent -e alma -e bsp \
+        | awk '{print $1}' \
+    `
+else
+    IMAGE_LIST=`docker images \
+        | grep -e yocto -e android -e wine -e fedora -e cent -e alma -e bsp \
+        | awk '{print ""$1 ":" $2}' \
+    `
+fi
 
 Usage ()
 {
