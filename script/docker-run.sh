@@ -63,6 +63,7 @@ docker run -it --rm\
     -v /etc/passwd:/etc/passwd:ro \
     -v /etc/shadow:/etc/shadow:ro \
     --hostname="$HOSTNAME" \
+    --security-opt seccomp=unconfined \
     ${DOCKER_OPTION} \
     ${DOCKER_IMAGE_NAME} \
     $CMD
