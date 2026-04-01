@@ -58,6 +58,7 @@ docker run -it --rm\
     ${ADDITIONAL_OPT} \
     -v $(pwd):$(pwd) \
     -v ${WORK_DIR}:${WORK_DIR} \
+    -v /opt:/opt \
     -w ${WORK_DIR} \
     ${DL_DIR_OPT} \
     -v /etc/passwd:/etc/passwd:ro \
