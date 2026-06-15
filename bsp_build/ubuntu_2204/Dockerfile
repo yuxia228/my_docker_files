@@ -18,7 +18,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf pigz \
        zstd simg2img libncurses5 python3-pycryptodome libssl-dev lzop \
        lld libelf-dev dwarves openjdk-11-jdk pigz cmake file device-tree-compiler fdisk python3-clang \
-       coreutils \
+       coreutils checkpolicy \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
 

@@ -17,11 +17,13 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        screen libncurses-dev ninja-build dosfstools \
        python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf pigz \
        zstd android-sdk-libsparse-utils libncurses6 python3-pycryptodome libssl-dev lzop \
-       lld libelf-dev dwarves openjdk-11-jdk pigz cmake file device-tree-compiler fdisk pipx \
+       lld libelf-dev dwarves openjdk-11-jdk pigz cmake file device-tree-compiler fdisk pipx checkpolicy \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
 
+RUN pipx ensurepath
 RUN pipx install git+https://github.com/xen-troops/moulin
+RUN pipx install kas
 
 # Locales
 RUN dpkg-reconfigure locales \
