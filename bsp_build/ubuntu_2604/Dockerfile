@@ -17,7 +17,8 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        screen libncurses-dev ninja-build dosfstools \
        python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf pigz \
        zstd android-sdk-libsparse-utils libncurses6 python3-pycryptodome libssl-dev lzop \
-       lld libelf-dev dwarves openjdk-11-jdk pigz cmake file device-tree-compiler fdisk pipx checkpolicy \
+       lld libelf-dev dwarves openjdk-11-jdk pigz cmake file device-tree-compiler fdisk pipx checkpolicy python3-clang \
+       libcmocka0 libcmocka-dev \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
 
