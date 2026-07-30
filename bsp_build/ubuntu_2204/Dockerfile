@@ -17,11 +17,10 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        screen libncurses-dev ninja-build dosfstools \
        python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf pigz \
        zstd simg2img libncurses5 python3-pycryptodome libssl-dev lzop \
-       lld libelf-dev dwarves openjdk-11-jdk pigz cmake file device-tree-compiler fdisk python3-clang \
-       coreutils checkpolicy \
+       lld libelf-dev dwarves openjdk-11-jdk openjdk-17-jdk pigz cmake file device-tree-compiler fdisk python3-clang \
+       coreutils checkpolicy tar=1.34+dfsg-1build3 --allow-downgrades \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home
-
 RUN pip3 install pygit2
 RUN pip3 install git+https://github.com/xen-troops/moulin
 RUN pip3 install meson mako west
