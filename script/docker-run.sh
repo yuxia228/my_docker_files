@@ -14,11 +14,19 @@ fi
 Usage ()
 {
     echo "Usage:"
-    echo "    $0 {yocto_image_name}"
+    echo "    $0 [-n|--no-tty] {yocto_image_name} [command]"
+    echo "option:"
+    echo "    -n | --no-tty: Run without -it (for non-interactive use, e.g. CI or background jobs)"
     echo "LIST:"
     echo "$IMAGE_LIST"
     exit
 }
+
+TTY_OPT="-it"
+if [ "$1" == "-n" ] || [ "$1" == "--no-tty" ]; then
+    TTY_OPT=""
+    shift
+fi
 
 if [ $# -lt 1 ]; then
     Usage
@@ -52,7 +60,7 @@ else ## fedora/cent
     sudogroup=wheel
     # ADDITIONAL_OPT="--group-add=mock"
 fi
-docker run -it --rm\
+docker run ${TTY_OPT} --rm\
     -u $(id -u):$(id -g) \
     --group-add="$sudogroup" \
     ${ADDITIONAL_OPT} \
@@ -65,6 +73,8 @@ docker run -it --rm\
     -v /etc/shadow:/etc/shadow:ro \
     --hostname="$HOSTNAME" \
     --security-opt seccomp=unconfined \
+    --security-opt systempaths=unconfined \
+    --cap-add=SYS_ADMIN \
     ${DOCKER_OPTION} \
     ${DOCKER_IMAGE_NAME} \
     $CMD
