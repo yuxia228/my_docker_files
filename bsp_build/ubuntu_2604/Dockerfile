@@ -7,17 +7,17 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove --purge -y \
        xz-utils debianutils iputils-ping python3-git python3-jinja2 libgl1 libglx-mesa0 libsdl1.2-dev \
        xterm locales curl vim sudo rsync bc \
        \
-       openjdk-21-jdk git-core gnupg flex bison \
-       gperf build-essential zip curl zlib1g-dev gcc-multilib ccache \
+       openjdk-21-jdk gnupg flex bison \
+       gperf zip zlib1g-dev ccache \
        g++-multilib libc6-dev-i386 x11proto-core-dev \
        libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils lz4 \
-       xsltproc unzip python3-networkx python3-wand bc \
+       xsltproc python3-networkx python3-wand \
        apt-transport-https ca-certificates ninja-build \
-       ninja-build dosfstools libncurses-dev flex bison \
-       screen libncurses-dev ninja-build dosfstools \
-       python3-pygit2 python3-venv python3-pyelftools protobuf-compiler gperf pigz \
+       dosfstools libncurses-dev \
+       screen \
+       python3-pygit2 python3-venv python3-pyelftools protobuf-compiler pigz \
        zstd android-sdk-libsparse-utils libncurses6 python3-pycryptodome libssl-dev lzop \
-       lld libelf-dev dwarves openjdk-11-jdk pigz cmake file device-tree-compiler fdisk pipx checkpolicy python3-clang \
+       lld libelf-dev dwarves openjdk-11-jdk cmake file device-tree-compiler fdisk pipx checkpolicy python3-clang \
        libcmocka0 libcmocka-dev \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 777 -R /home

@@ -3,7 +3,7 @@
 SCRIPT_DIR=$(cd `dirname $0` && pwd)
 cd ${SCRIPT_DIR}
 
-if [ -e ${HOME}/bin ]; then 
+if [ ! -e ${HOME}/bin ]; then
     mkdir -p ${HOME}/bin
 fi
 

@@ -44,7 +44,7 @@ if [ $# -gt 0 ]; then
 fi
 
 DL_DIR_OPT=""
-if [ -n $DL_DIR ]; then
+if [ -n "${DL_DIR:-}" ]; then
     DL_DIR_OPT="-e DL_DIR -v ${DL_DIR}:${DL_DIR}"
 fi
 

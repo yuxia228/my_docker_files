@@ -16,16 +16,15 @@ build_docker_image () {
     NAME=$1
     TAG=$2
     DOCKER_FILE_DIR=$3
-    docker build -t $NAME:$TAG $DOCKER_FILE_DIR --no-cache
+    docker build -t $NAME:$TAG $DOCKER_FILE_DIR --pull ${DOCKER_BUILD_OPTS}
 }
 
 if [ $# -ne 1 ];then
     Usage; exit;
 fi
 
-docker buildx create --name mybuilder
-docker buildx use mybuilder
-docker buildx inspect --bootstrap
+# Set DOCKER_BUILD_OPTS=--no-cache to force a full rebuild.
+DOCKER_BUILD_OPTS=${DOCKER_BUILD_OPTS:-}
 
 cd $SCRIPT_DIR/../
 # single build
